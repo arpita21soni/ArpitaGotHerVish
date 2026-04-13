@@ -26,6 +26,56 @@ body {
   background-color: #fff;
 }
 
+.hidden {
+  display: none !important;
+}
+
+.rsvp-password-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.rsvp-password-form input {
+  flex: 1 1 280px;
+  max-width: 320px;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  font-size: 1rem;
+  background: white;
+  color: var(--dark-text);
+}
+
+.rsvp-password-form button {
+  padding: 0.95rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  background: var(--primary-purple);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.rsvp-password-form button:hover {
+  background: var(--primary-blue);
+}
+
+.password-message {
+  width: 100%;
+  text-align: center;
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--primary-purple);
+}
+
+.password-message.error {
+  color: #b1305d;
+}
+
 /* Header & Navigation */
 header {
   background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);

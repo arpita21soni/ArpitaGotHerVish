@@ -99,6 +99,66 @@ function initContactForm() {
   });
 }
 
+function initRSVPPasswordGate() {
+  const gateForm = document.getElementById('rsvp-password-form');
+  const passwordInput = document.getElementById('rsvp-password-input');
+  const message = document.getElementById('rsvp-password-message');
+  const rsvpContainer = document.getElementById('rsvp-form-container');
+
+  if (!gateForm || !passwordInput || !message || !rsvpContainer) return;
+
+  const RSVP_PASSWORD = 'invite2026';
+
+  gateForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const enteredCode = passwordInput.value.trim();
+    if (enteredCode.toLowerCase() === RSVP_PASSWORD.toLowerCase()) {
+      rsvpContainer.classList.remove('hidden');
+      gateForm.classList.add('hidden');
+      message.textContent = 'Welcome! The RSVP form is now unlocked.';
+      message.classList.remove('error');
+    } else {
+      message.textContent = 'That code is not correct. Please use the invitation code from your invite.';
+      message.classList.add('error');
+    }
+  });
+}
+
+function initRSVPFormSubmission() {
+  const form = document.getElementById('rsvp-form');
+  if (!form) return;
+
+  const RSVP_SUBMIT_URL = 'https://script.google.com/macros/s/AKfycby4mSytjbMn0X0fPSjogeofPJmgZGVcvTC1cGmO7mEv5b90nbFFgYZGD11iTiXENwpYJQ/exec';
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    data.timestamp = new Date().toLocaleString();
+
+    try {
+      const response = await fetch(RSVP_SUBMIT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        showSuccessMessage('Your RSVP has been submitted! Thank you for confirming.');
+        form.reset();
+      } else {
+        showSuccessMessage('Your RSVP could not be submitted right now. Please try again later.', 'info');
+      }
+    } catch (error) {
+      showSuccessMessage('Unable to submit at the moment. Please check your connection and try again.', 'info');
+    }
+  });
+}
+
 // Show Success Message
 function showSuccessMessage(message, type = 'success') {
   let messageElement = document.querySelector('.success-message');
@@ -208,6 +268,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
   initGuestBookForm();
   initContactForm();
+  initRSVPPasswordGate();
+  initRSVPFormSubmission();
   initSmoothScroll();
   initGalleryLightbox();
 });
