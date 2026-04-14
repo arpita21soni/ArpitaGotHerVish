@@ -129,14 +129,14 @@ function initRSVPFormSubmission() {
   const form = document.getElementById('rsvp-form');
   if (!form) return;
 
-  const RSVP_SUBMIT_URL = 'https://script.google.com/macros/s/AKfycby4mSytjbMn0X0fPSjogeofPJmgZGVcvTC1cGmO7mEv5b90nbFFgYZGD11iTiXENwpYJQ/exec';
+  // Update to use local Flask backend
+  const RSVP_SUBMIT_URL = 'http://localhost:5000/rsvp';
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-    data.timestamp = new Date().toLocaleString();
 
     try {
       const response = await fetch(RSVP_SUBMIT_URL, {
