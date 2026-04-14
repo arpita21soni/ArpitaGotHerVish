@@ -100,12 +100,13 @@ function initContactForm() {
 }
 
 function initRSVPPasswordGate() {
+
   const gateForm = document.getElementById('rsvp-password-form');
   const passwordInput = document.getElementById('rsvp-password-input');
   const message = document.getElementById('rsvp-password-message');
-  const rsvpContainer = document.getElementById('rsvp-form-container');
+  const typeformContainer = document.getElementById('typeform-container');
 
-  if (!gateForm || !passwordInput || !message || !rsvpContainer) return;
+  if (!gateForm || !passwordInput || !message || !typeformContainer) return;
 
   const RSVP_PASSWORD = 'invite2026';
 
@@ -114,8 +115,11 @@ function initRSVPPasswordGate() {
 
     const enteredCode = passwordInput.value.trim();
     if (enteredCode.toLowerCase() === RSVP_PASSWORD.toLowerCase()) {
-      // Redirect to Typeform link
-      window.location.href = 'https://form.typeform.com/to/umnTvo9B';
+      // Hide password form and show Typeform
+      gateForm.style.display = 'none';
+      typeformContainer.style.display = 'block';
+      message.textContent = '';
+      message.classList.remove('error');
     } else {
       message.textContent = 'That code is not correct. Please use the invitation code from your invite.';
       message.classList.add('error');
