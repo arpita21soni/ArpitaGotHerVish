@@ -151,10 +151,13 @@ function initRSVPFormSubmission() {
         showSuccessMessage('Your RSVP has been submitted! Thank you for confirming.');
         form.reset();
       } else {
-        showSuccessMessage('Your RSVP could not be submitted right now. Please try again later.', 'info');
+        const text = await response.text();
+        console.error('RSVP submission failed', response.status, text);
+        showSuccessMessage(`Your RSVP could not be submitted right now: ${response.status}. Please try again later.`, 'info');
       }
     } catch (error) {
-      showSuccessMessage('Unable to submit at the moment. Please check your connection and try again.', 'info');
+      console.error('RSVP submission error', error);
+      showSuccessMessage(`Unable to submit at the moment. ${error.message}`, 'info');
     }
   });
 }
