@@ -114,10 +114,8 @@ function initRSVPPasswordGate() {
 
     const enteredCode = passwordInput.value.trim();
     if (enteredCode.toLowerCase() === RSVP_PASSWORD.toLowerCase()) {
-      rsvpContainer.classList.remove('hidden');
-      gateForm.classList.add('hidden');
-      message.textContent = 'Welcome! The RSVP form is now unlocked.';
-      message.classList.remove('error');
+      // Redirect to Typeform link
+      window.location.href = 'https://form.typeform.com/to/umnTvo9B';
     } else {
       message.textContent = 'That code is not correct. Please use the invitation code from your invite.';
       message.classList.add('error');
@@ -271,8 +269,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
   initGuestBookForm();
   initContactForm();
-  initRSVPPasswordGate();
-  initRSVPFormSubmission();
+  // Only initialize password gate if present
+  if (document.getElementById('rsvp-password-form')) {
+    initRSVPPasswordGate();
+  }
+  // Do not initialize RSVP form submission, as the form is removed
   initSmoothScroll();
   initGalleryLightbox();
 });

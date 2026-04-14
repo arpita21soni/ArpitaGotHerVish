@@ -44,55 +44,19 @@
         </p>
       </div>
 
-      <div class="content-section" style="margin-top: 2rem;">
+      <div class="content-section" style="margin-top: 2rem; text-align: center;">
         <h3>Invite-Only RSVP</h3>
         <p style="color: #666; margin: 1rem 0;">
           Enter the invitation code from your wedding invitation to unlock the RSVP form. This keeps the RSVP limited to invited guests only.
         </p>
-        <form id="rsvp-password-form" class="rsvp-password-form">
+        <form id="rsvp-password-form" class="rsvp-password-form" style="display: inline-block;">
           <input id="rsvp-password-input" type="password" placeholder="Invitation code" aria-label="Invitation code" required>
           <button type="submit" id="rsvp-password-submit">Unlock RSVP</button>
           <p id="rsvp-password-message" class="password-message"></p>
         </form>
-      </div>
-
-      <div id="rsvp-form-container" class="hidden">
-        <form id="rsvp-form">
-          <div class="form-group">
-            <label for="rsvp-name">Full Name</label>
-            <input id="rsvp-name" name="name" type="text" placeholder="Your full name" required>
-          </div>
-          <div class="form-group">
-            <label for="rsvp-email">Email</label>
-            <input id="rsvp-email" name="email" type="email" placeholder="Your email" required>
-          </div>
-          <div class="form-group">
-            <label for="rsvp-phone">Phone</label>
-            <input id="rsvp-phone" name="phone" type="tel" placeholder="Your phone number" required>
-          </div>
-          <div class="form-group">
-            <label for="rsvp-attendance">Will you attend?</label>
-            <select id="rsvp-attendance" name="attendance" required>
-              <option value="">Select an option</option>
-              <option value="Yes">Yes, I will attend</option>
-              <option value="No">No, I cannot attend</option>
-              <option value="Maybe">Maybe</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="rsvp-guests">Number of guests</label>
-            <input id="rsvp-guests" name="guests" type="text" placeholder="How many guests are coming" required>
-          </div>
-          <div class="form-group">
-            <label for="rsvp-dietary">Dietary requirements</label>
-            <textarea id="rsvp-dietary" name="dietary" placeholder="Any dietary restrictions or preferences"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="rsvp-notes">Additional notes</label>
-            <textarea id="rsvp-notes" name="notes" placeholder="Any questions or notes for us"></textarea>
-          </div>
-          <button type="submit">Submit RSVP</button>
-        </form>
+        <p style="margin-top: 2rem;">
+          <em>After entering the correct code, you will be redirected to our RSVP form.</em>
+        </p>
       </div>
 
       <div class="content-section" style="margin-top: 2rem;">
