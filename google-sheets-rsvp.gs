@@ -1,9 +1,9 @@
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('RSVP');
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Wedding RSVP');
     if (!sheet) {
-      throw new Error('Sheet named RSVP not found.');
+      throw new Error('Sheet named Wedding RSVP not found.');
     }
 
     const row = [
