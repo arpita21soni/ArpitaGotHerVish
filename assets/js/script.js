@@ -129,8 +129,8 @@ function initRSVPFormSubmission() {
   const form = document.getElementById('rsvp-form');
   if (!form) return;
 
-  // Update to use local Flask backend
-  const RSVP_SUBMIT_URL = 'http://localhost:5000/rsvp';
+  // Google Apps Script Web App endpoint
+  const RSVP_SUBMIT_URL = 'https://script.google.com/macros/s/AKfycby4mSytjbMn0X0fPSjogeofPJmgZGVcvTC1cGmO7mEv5b90nbFFgYZGD11iTiXENwpYJQ/exec';
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
