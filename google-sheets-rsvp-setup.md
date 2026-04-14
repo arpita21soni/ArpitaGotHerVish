@@ -4,7 +4,7 @@ This guide shows how to connect the website RSVP form to Google Sheets using Goo
 
 ## 1. Create a Google Sheet
 1. Open Google Drive.
-2. Create a new Google Sheet and name it `Wedding RSVP`.
+2. Create a new Google Sheet and name it `RSVP`.
 3. In the first row, add these headers:
    - `Timestamp`
    - `Name`
