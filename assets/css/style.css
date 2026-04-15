@@ -351,9 +351,15 @@ h3 {
 
 .gallery-item img {
   width: 100%;
-  aspect-ratio: 2 / 3;
+  height: 250px;
   object-fit: cover;
   transition: transform 0.3s ease;
+}
+
+/* Engagement photos: 2:3 aspect ratio */
+.engagement-photo {
+  aspect-ratio: 2 / 3;
+  height: auto;
 }
 
 .gallery-item:hover img {
