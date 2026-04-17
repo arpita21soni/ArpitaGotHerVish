@@ -162,28 +162,5 @@
   </footer>
 
   <script src="assets/js/script.js"></script>
-  <script>
-    // Audio player logic
-    const audio = document.getElementById('wedding-audio');
-    const muteBtn = document.getElementById('mute-btn');
-    audio.controls = false;
-    // Restore mute state from localStorage
-    const isMuted = localStorage.getItem('wedding-audio-muted') === 'true';
-    // Unmute if not muted by user
-    window.addEventListener('DOMContentLoaded', () => {
-      if (!isMuted) {
-        audio.muted = false;
-      }
-      muteBtn.innerText = isMuted ? '🔇' : '🔊';
-      audio.volume = 0.7;
-      audio.play().catch(() => {});
-    });
-    // On click, toggle mute
-    muteBtn.onclick = () => {
-      audio.muted = !audio.muted;
-      muteBtn.innerText = audio.muted ? '🔇' : '🔊';
-      localStorage.setItem('wedding-audio-muted', audio.muted);
-    };
-  </script>
 </body>
 </html>
