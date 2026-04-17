@@ -359,7 +359,10 @@ h3 {
 /* Engagement photos: 2:3 aspect ratio */
 .engagement-photo {
   aspect-ratio: 2 / 3;
-  height: auto;
+  width: 100%;
+  height: auto !important;
+  object-fit: cover;
+  display: block;
 }
 
 .gallery-item:hover img {
