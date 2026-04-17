@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <audio id="wedding-audio" src="assets/audio/Tum_Ho_To_Song.mp3" autoplay loop muted></audio>
+    <button id="mute-btn" style="position: fixed; bottom: 24px; right: 24px; z-index: 9999; background: var(--primary-purple, #9b4f73); color: #fff; border: none; border-radius: 50%; width: 48px; height: 48px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); font-size: 1.5rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+      🔊
+    </button>
   <header>
     <div class="header-container">
       <div class="logo-section">
@@ -158,5 +162,28 @@
   </footer>
 
   <script src="assets/js/script.js"></script>
+  <script>
+    // Audio player logic
+    const audio = document.getElementById('wedding-audio');
+    const muteBtn = document.getElementById('mute-btn');
+    audio.controls = false;
+    // Restore mute state from localStorage
+    const isMuted = localStorage.getItem('wedding-audio-muted') === 'true';
+    // Unmute if not muted by user
+    window.addEventListener('DOMContentLoaded', () => {
+      if (!isMuted) {
+        audio.muted = false;
+      }
+      muteBtn.innerText = isMuted ? '🔇' : '🔊';
+      audio.volume = 0.7;
+      audio.play().catch(() => {});
+    });
+    // On click, toggle mute
+    muteBtn.onclick = () => {
+      audio.muted = !audio.muted;
+      muteBtn.innerText = audio.muted ? '🔇' : '🔊';
+      localStorage.setItem('wedding-audio-muted', audio.muted);
+    };
+  </script>
 </body>
 </html>

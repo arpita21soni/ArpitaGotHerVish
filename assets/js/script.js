@@ -268,16 +268,38 @@ function initGalleryLightbox() {
 }
 
 // Initialize all functions when DOM is ready
+
+function initWeddingAudio() {
+  const audio = document.getElementById('wedding-audio');
+  const muteBtn = document.getElementById('mute-btn');
+  if (!audio || !muteBtn) return;
+  audio.controls = false;
+  const isMuted = localStorage.getItem('wedding-audio-muted') === 'true';
+  if (!isMuted) {
+    audio.muted = false;
+  }
+  muteBtn.innerText = isMuted ? '🔇' : '🔊';
+  audio.volume = 0.7;
+  // Try to play immediately
+  setTimeout(() => {
+    audio.play().catch(() => {});
+  }, 0);
+  muteBtn.onclick = () => {
+    audio.muted = !audio.muted;
+    muteBtn.innerText = audio.muted ? '🔇' : '🔊';
+    localStorage.setItem('wedding-audio-muted', audio.muted);
+  };
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initFAQ();
   initGuestBookForm();
   initContactForm();
-  // Only initialize password gate if present
   if (document.getElementById('rsvp-password-form')) {
     initRSVPPasswordGate();
   }
-  // Do not initialize RSVP form submission, as the form is removed
   initSmoothScroll();
   initGalleryLightbox();
+  initWeddingAudio();
 });
